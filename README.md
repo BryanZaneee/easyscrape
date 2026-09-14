@@ -321,3 +321,26 @@ pages, plus unit tests for the runners, stats layer, and TUI primitives:
   container, so the same adapter works across every Fextralife wiki without
   per-game tweaks. Other sites need either `--no-clean` or a site-specific
   cleanup module.
+
+## Contributing
+
+Pull requests are welcome. For anything larger than a fix, open an issue first
+so the change can be discussed.
+
+Run the suite before opening a PR:
+
+```bash
+.venv/bin/pytest
+```
+
+Cleanup changes need a fixture. Add the raw HTML under `tests/fixtures/` and a
+case in `tests/test_cleanup.py` rather than asserting against a live fetch, so
+the suite stays offline and the site cannot break it.
+
+A new site adapter is a cleanup module plus a selector; see
+[Extending to other sites](#extending-to-other-sites) for the four files
+involved.
+
+## License
+
+[MIT](LICENSE)
